@@ -11,6 +11,10 @@
 
 ## Redux
 
+1. student의 age만 변경하여도 student의 주소값이 바뀌기 때문에 전체가 재렌더링이 되는 아쉬움이 있다.
+2. Provider와 함께 사용되어야 한다.
+3. `<StudentComponent>`별로 독립된 store를 사용하지 못하여 고유ID를 객체별로 부여하여 사용해야 한다.
+
 ## Mobx
 
 ## Jotai

@@ -1,28 +1,11 @@
 import Button from '@components/button';
 import Input from '@components/input';
-import { Student } from '@models/student';
+import { fetchStudent } from '@pages/redux//components/ReduxWrapper';
 import StudentComponent from '@pages/redux/components/StudentComponent';
 import { useAppDispatch, useAppSelector } from '@pages/redux/store';
 import { addStudent } from '@pages/redux/store/student';
-import _ from 'lodash';
 import { FormEvent, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-
-const fetchStudent = (name: string): Promise<Student> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        name,
-        age: _.random(17, 19),
-        grades: [
-          { subject: 'kor', score: _.random(0, 100) },
-          { subject: 'eng', score: _.random(0, 100) },
-          { subject: 'sci', score: _.random(0, 100) },
-        ],
-      });
-    }, 1000);
-  });
-};
 
 const ReduxComponent = () => {
   const inputRef = useRef<HTMLInputElement>(null);
