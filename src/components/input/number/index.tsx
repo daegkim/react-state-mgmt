@@ -7,15 +7,18 @@ import {
 } from 'react';
 import Input from '..';
 
-interface InputNumberProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputNumberProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'> {
   numberType?: 'integer' | 'float';
   positiveOnly?: boolean;
   maxNumber?: number;
+  value: number | null;
+  onChange: (e: ChangeEvent<HTMLInputElement>, value: number | null) => void;
 }
 
 const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
   (
-    { numberType = 'integer', positiveOnly = false, maxNumber, ...rest },
+    { numberType = 'integer', positiveOnly = false, maxNumber, value, ...rest },
     ref
   ) => {
     const oldValue = useRef('');
@@ -61,7 +64,7 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 
       oldValue.current = e.target.value;
 
-      rest.onChange?.(e);
+      rest.onChange?.(e, e.target.value ? Number(e.target.value) : null);
     };
 
     const handleBlurInput = (e: FocusEvent<HTMLInputElement>) => {
@@ -78,6 +81,7 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
       <Input
         ref={ref}
         {...rest}
+        value={value?.toString() || ''}
         onChange={handleChangeInput}
         onBlur={handleBlurInput}
       />
