@@ -17,7 +17,7 @@ const ReduxPage = () => {
   return (
     <div className="flex flex-col gap-2">
       <p className="text-xl">redux</p>
-      <div>
+      <div className="flex flex-col gap-2">
         {students.map((student) => (
           <div key={student.id} className="flex justify-between w-48">
             <p>{student.name}</p>
