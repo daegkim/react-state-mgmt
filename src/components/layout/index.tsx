@@ -15,7 +15,7 @@ const Layout = () => {
   };
 
   return (
-    <div className="w-full h-full">
+    <div id="layout" className="w-full h-full">
       <div
         className={classNames(
           'flex items-center gap-4',

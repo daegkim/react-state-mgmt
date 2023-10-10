@@ -18,7 +18,7 @@ const NameComponent = ({ uid }: NameComponentProps) => {
   return (
     <div className="flex gap-2">
       <p>이름</p>
-      <Input value={name} onChange={handleChangeName} />
+      <Input value={name || ''} onChange={handleChangeName} />
     </div>
   );
 };

@@ -20,6 +20,9 @@ const studentSlice = createSlice({
     ) => {
       state.students[action.payload.uid] = action.payload.student;
     },
+    removeStudent: (state, action: PayloadAction<string>) => {
+      delete state.students[action.payload];
+    },
     setStudentAge: (
       state,
       action: PayloadAction<{ uid: string; age: number | null }>
@@ -37,16 +40,16 @@ const studentSlice = createSlice({
   },
 });
 
-export const { addStudent, setStudentAge, setStudentName } =
+export const { addStudent, setStudentAge, setStudentName, removeStudent } =
   studentSlice.actions;
 
 export const selectStudent = (uid: string) => (state: RootState) =>
   state.student.students[uid];
 
 export const selectStudentAge = (uid: string) => (state: RootState) =>
-  state.student.students[uid].age;
+  state.student.students[uid]?.age;
 
 export const selectStudentName = (uid: string) => (state: RootState) =>
-  state.student.students[uid].name;
+  state.student.students[uid]?.name;
 
 export default studentSlice;
