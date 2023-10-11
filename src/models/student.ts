@@ -3,3 +3,10 @@ export interface Student {
   name: string;
   age: number | null;
 }
+
+export interface StudentDetail extends Student {
+  grades: {
+    subject: 'kor' | 'eng' | 'sci';
+    score: number;
+  }[];
+}
