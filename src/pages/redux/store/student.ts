@@ -77,7 +77,7 @@ export const selectStudentName = (uid: string) => (state: RootState) =>
   state.student.studentDetails[uid]?.name;
 
 export const selectStudentGrades = (uid: string) => (state: RootState) =>
-  state.student.studentDetails[uid]?.grades || [];
+  state.student.studentDetails[uid]?.grades;
 
 export const selectStudentGradesAvg = (uid: string) => (state: RootState) => {
   const studentDetail = state.student.studentDetails[uid];

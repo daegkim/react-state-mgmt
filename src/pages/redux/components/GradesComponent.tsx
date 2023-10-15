@@ -10,8 +10,8 @@ const GradesComponent = ({ uid }: GradeComponentProps) => {
 
   return (
     <div className="h-20">
-      {grades.map((grade) => (
-        <div className="flex gap-2">
+      {grades?.map((grade) => (
+        <div key={grade.subject} className="flex gap-2">
           <div className="w-10 text-right">{grade.subject}</div>
           <div>{grade.score}</div>
         </div>
